@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Student</title>
-</head>
-<body>
-
-    <h1>Add Student</h1>
-
-    <form action="/students" method="POST">
+<x-layouts.app title="Add Student">
+    <form class="panel mx-auto max-w-2xl space-y-5" method="POST" action="{{ route('admin.students.store') }}">
         @csrf
-
-        <input type="text" name="name" placeholder="Student Name">
-
-        <button type="submit">Save</button>
+        <div>
+            <p class="page-kicker">New record</p>
+            <h1 class="page-title">Add student</h1>
+        </div>
+        @include('students.partials.form', ['student' => null])
+        <div class="flex gap-3">
+            <button class="btn-primary" type="submit">Save student</button>
+            <a class="btn-secondary" href="{{ route('admin.students.index') }}">Cancel</a>
+        </div>
     </form>
-
-    <br>
-
-    <a href="/students">Back</a>
-
-</body>
-</html>
+</x-layouts.app>

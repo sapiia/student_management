@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Student</title>
-</head>
-<body>
-
-    <h1>Edit Student</h1>
-
-    <form action="/students/{{ $student->id }}" method="POST">
+<x-layouts.app title="Edit Student">
+    <form class="panel mx-auto max-w-2xl space-y-5" method="POST" action="{{ route('admin.students.update', $student) }}">
         @csrf
         @method('PUT')
-
-        <input type="text" name="name" value="{{ $student->name }}">
-
-        <button type="submit">Update</button>
+        <div>
+            <p class="page-kicker">Student record</p>
+            <h1 class="page-title">Edit student</h1>
+        </div>
+        @include('students.partials.form', ['student' => $student])
+        <div class="flex gap-3">
+            <button class="btn-primary" type="submit">Update student</button>
+            <a class="btn-secondary" href="{{ route('admin.students.index') }}">Cancel</a>
+        </div>
     </form>
-
-    <br>
-
-    <a href="/students">Back</a>
-
-</body>
-</html>
+</x-layouts.app>
