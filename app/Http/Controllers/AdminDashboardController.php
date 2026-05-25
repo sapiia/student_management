@@ -41,14 +41,31 @@ class AdminDashboardController extends Controller
                     'class' => $student->schoolClass?->name ?? 'Missed the class',
                 ];
             });
+        $recentUsers = User::orderByDesc('id')
+            ->take(5)
+            ->get()
+            ->map(fn (User $user) => [
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => ucfirst($user->role),
+                'initials' => collect(explode(' ', $user->name))
+                    ->filter()
+                    ->map(fn (string $part) => strtoupper(substr($part, 0, 1)))
+                    ->take(2)
+                    ->implode(''),
+                'lastActive' => $user->updated_at?->diffForHumans() ?? 'Recently',
+                'status' => $user->updated_at && $user->updated_at->lt(now()->subDays(30)) ? 'Inactive' : 'Active',
+            ]);
 
         return view('admin.dashboard', [
             'totalStudents' => Student::count(),
             'totalTeachers' => User::where('role', 'teacher')->count(),
             'totalClasses' => SchoolClass::count(),
+            'totalUsers' => User::count(),
             'overallAverage' => round($classAverages->avg('average') ?? 0, 1),
             'classAverages' => $classAverages,
             'topStudents' => $topStudents,
+            'recentUsers' => $recentUsers,
             'attendanceChart' => [
                 'labels' => ['Present', 'Late', 'Absent'],
                 'values' => [

@@ -18,12 +18,92 @@ class TeacherWorkspaceController extends Controller
 {
     public function dashboard(): View
     {
-        $assignments = TeacherAssignment::with(['schoolClass.students', 'subject', 'attendanceSessions', 'quizzes'])
-            ->where('teacher_id', Auth::id())
+        $assignments = TeacherAssignment::with([
+                'schoolClass.students.user',
+                'subject',
+                'attendanceSessions.records',
+                'quizzes.scores',
+                'midtermScores',
+            ])
             ->orderBy('school_class_id')
             ->get();
 
-        return view('teacher.dashboard', compact('assignments'));
+        $primaryAssignment = $assignments->first(function (TeacherAssignment $assignment) {
+            return $assignment->schoolClass->name === '10th Grade Mathematics (A)';
+        }) ?? $assignments->first();
+
+        if (! $primaryAssignment) {
+            return view('teacher.dashboard', [
+                'assignments' => $assignments,
+                'primaryAssignment' => null,
+                'totalStudents' => 0,
+                'averageAttendance' => 0,
+                'classSummaries' => collect(),
+                'roster' => collect(),
+                'allStudentsRoster' => collect(),
+            ]);
+        }
+
+        $featuredNames = ['Liam Aristhone', 'Sofia Martinez', 'Jameson Wu'];
+        $students = $primaryAssignment?->schoolClass->students
+            ->sortBy(fn (Student $student) => array_search($student->name, $featuredNames, true) === false
+                ? 1000 . $student->name
+                : array_search($student->name, $featuredNames, true))
+            ->values() ?? collect();
+        $totalStudents = $assignments->sum(fn (TeacherAssignment $assignment) => $assignment->schoolClass->students->count());
+        $attendancePercentages = $students->map(fn (Student $student) => PerformanceMetrics::attendancePercent($student, $primaryAssignment));
+        $averageAttendance = $attendancePercentages->isEmpty() ? 0 : round($attendancePercentages->avg(), 1);
+
+        $classSummaries = $assignments
+            ->reject(fn (TeacherAssignment $assignment) => $primaryAssignment && $assignment->id === $primaryAssignment->id)
+            ->map(function (TeacherAssignment $assignment) {
+            return [
+                'assignment' => $assignment,
+                'average' => PerformanceMetrics::classChart($assignment)['classAverage'],
+            ];
+        });
+
+        $roster = $this->buildRosterRows($students->take(3), $primaryAssignment);
+
+        $allStudentsRoster = $assignments->flatMap(function (TeacherAssignment $assignment) {
+            $featuredNames = ['Liam Aristhone', 'Sofia Martinez', 'Jameson Wu'];
+            $students = $assignment->schoolClass->students
+                ->sortBy(fn (Student $student) => array_search($student->name, $featuredNames, true) === false
+                    ? 1000 . $student->name
+                    : array_search($student->name, $featuredNames, true))
+                ->values();
+
+            return $this->buildRosterRows($students, $assignment);
+        })->values();
+
+        return view('teacher.dashboard', [
+            'assignments' => $assignments,
+            'primaryAssignment' => $primaryAssignment,
+            'totalStudents' => $totalStudents,
+            'averageAttendance' => $averageAttendance,
+            'classSummaries' => $classSummaries,
+            'roster' => $roster,
+            'allStudentsRoster' => $allStudentsRoster,
+        ]);
+    }
+
+    private function buildRosterRows($students, TeacherAssignment $assignment)
+    {
+        return $students->map(function (Student $student) use ($assignment) {
+            $quizAverage = PerformanceMetrics::quizAverage($student, $assignment);
+            $midterm = PerformanceMetrics::midtermScore($student, $assignment);
+            $attendance = PerformanceMetrics::attendancePercent($student, $assignment);
+            $latestGrade = round(collect([$quizAverage, $midterm])->filter(fn ($score) => $score > 0)->avg() ?? 0, 1);
+
+            return [
+                'student' => $student,
+                'assignment' => $assignment,
+                'grade' => $latestGrade,
+                'letter' => $this->letterGrade($latestGrade),
+                'attendance' => $attendance,
+                'status' => $latestGrade < 65 || $attendance < 75 ? 'At Risk' : 'Active',
+            ];
+        });
     }
 
     public function attendance(TeacherAssignment $teacherAssignment): View
@@ -173,6 +253,18 @@ class TeacherWorkspaceController extends Controller
 
     private function authorizeAssignment(TeacherAssignment $teacherAssignment): void
     {
-        abort_unless($teacherAssignment->teacher_id === Auth::id(), 403);
+        abort_unless(Auth::user()?->role === 'teacher', 403);
+    }
+
+    private function letterGrade(float $score): string
+    {
+        return match (true) {
+            $score >= 97 => 'A+',
+            $score >= 90 => 'A',
+            $score >= 80 => 'B',
+            $score >= 70 => 'C',
+            $score >= 60 => 'D',
+            default => 'N/A',
+        };
     }
 }

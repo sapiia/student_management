@@ -1,184 +1,215 @@
 <x-layouts.app title="Admin Dashboard">
-    <section class="admin-card">
-        <h1 class="text-2xl font-black text-[#171326]">Admin Dashboard</h1>
+    <section class="admin-edupulse-dashboard">
+        <header class="admin-dashboard-topbar">
+            <div>
+                <h1>Dashboard Overview</h1>
+                <p>Welcome back, {{ auth()->user()->name }}</p>
+            </div>
+            <div>
+                <label class="admin-global-search">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="search" placeholder="Global Search...">
+                </label>
+                <button type="button" aria-label="Notifications">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <i></i>
+                </button>
+                <div class="admin-profile-avatar">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</div>
+            </div>
+        </header>
 
-        <div class="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <div class="admin-stat-card">
-                <div><span>Students</span><strong>{{ number_format($totalStudents) }}</strong></div>
-                <div class="admin-stat-icon">S</div>
-            </div>
-            <div class="admin-stat-card">
-                <div><span>Teachers</span><strong>{{ number_format($totalTeachers) }}</strong></div>
-                <div class="admin-stat-icon">T</div>
-            </div>
-            <div class="admin-stat-card">
-                <div><span>Classes</span><strong>{{ number_format($totalClasses) }}</strong></div>
-                <div class="admin-stat-icon">C</div>
-            </div>
-            <div class="admin-stat-card">
-                <div><span>Avg Score</span><strong>{{ $overallAverage }}%</strong></div>
-                <div class="admin-stat-icon">%</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_330px]">
-        <section class="admin-card">
-            <div class="flex items-start justify-between">
+        <section class="admin-stat-grid">
+            <article class="admin-tonal-card admin-total-card primary">
                 <div>
-                    <h2 class="text-xl font-black">All Exam Result</h2>
-                    <p class="mt-1 text-sm text-zinc-500">Students and teacher performance</p>
+                    <span>Total Students</span>
+                    <strong>{{ number_format($totalStudents) }}</strong>
+                    <small><span class="material-symbols-outlined">trending_up</span> {{ number_format($overallAverage, 1) }}% overall average</small>
                 </div>
-                <div class="flex items-center gap-4 text-xs font-semibold text-zinc-500">
-                    <span><span class="mr-1 inline-block h-2 w-2 rounded-full bg-[#4f79c9]"></span>Teacher</span>
-                    <span><span class="mr-1 inline-block h-2 w-2 rounded-full bg-[#dc4e98]"></span>Student</span>
+                <span class="material-symbols-outlined">school</span>
+            </article>
+            <article class="admin-tonal-card admin-total-card secondary">
+                <div>
+                    <span>Active Teachers</span>
+                    <strong>{{ number_format($totalTeachers) }}</strong>
+                    <small><span class="material-symbols-outlined">check_circle</span> Assigned faculty accounts</small>
                 </div>
-            </div>
-            <canvas class="mt-4" id="examResultChart" height="220"></canvas>
+                <span class="material-symbols-outlined">supervisor_account</span>
+            </article>
+            <article class="admin-tonal-card admin-total-card tertiary">
+                <div>
+                    <span>Total Classes</span>
+                    <strong>{{ number_format($totalClasses) }}</strong>
+                    <small><span class="material-symbols-outlined">room</span> Active academic groups</small>
+                </div>
+                <span class="material-symbols-outlined">meeting_room</span>
+            </article>
+            <article class="admin-tonal-card admin-total-card danger">
+                <div>
+                    <span>Total Users</span>
+                    <strong>{{ number_format($totalUsers) }}</strong>
+                    <small><span class="material-symbols-outlined">schedule</span> Students, teachers, admins</small>
+                </div>
+                <span class="material-symbols-outlined">manage_accounts</span>
+            </article>
         </section>
 
-        <section class="admin-card">
-            <div class="flex items-start justify-between">
-                <h2 class="text-xl font-black">Students</h2>
-                <span class="text-xl font-black text-zinc-400">...</span>
+        <section class="admin-tonal-card admin-user-card">
+            <div class="admin-card-header">
+                <div>
+                    <h2>User Management</h2>
+                    <p>Manage accounts for students, teachers, and staff members.</p>
+                </div>
+                <div>
+                    <label>
+                        <span class="material-symbols-outlined">filter_list</span>
+                        <select>
+                            <option>All Users</option>
+                            <option>Students</option>
+                            <option>Teachers</option>
+                            <option>Admins</option>
+                        </select>
+                    </label>
+                    <a href="{{ route('admin.students.index') }}">
+                        <span class="material-symbols-outlined">download</span>
+                        Export CSV
+                    </a>
+                </div>
             </div>
-            <div class="mx-auto mt-4 max-w-[230px]">
-                <canvas id="studentsChart" height="230"></canvas>
-            </div>
-            <div class="mt-4 flex justify-center gap-7 text-sm font-semibold">
-                <span><span class="mr-2 inline-block h-3 w-3 rounded-full bg-[#4f79c9]"></span>Present</span>
-                <span><span class="mr-2 inline-block h-3 w-3 rounded-full bg-[#dc4e98]"></span>Late</span>
-            </div>
-        </section>
-    </div>
 
-    <div class="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_330px]">
-        <section class="admin-card">
-            <div class="flex items-start justify-between">
-                <h2 class="text-xl font-black">Star Students</h2>
-                <span class="text-xl font-black text-zinc-400">...</span>
-            </div>
-            <div class="mt-4 overflow-x-auto">
-                <table class="admin-table">
+            <div class="admin-user-table-wrap">
+                <table class="admin-user-table">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>ID</th>
-                            <th>Marks</th>
-                            <th>Percent</th>
-                            <th>Class</th>
+                            <th>User Name</th>
+                            <th>Role</th>
+                            <th>Last Active</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($topStudents as $student)
+                        @forelse($recentUsers as $user)
                             <tr>
-                                <td><span class="inline-flex h-4 w-4 rounded border border-zinc-300 {{ $loop->iteration === 2 ? 'bg-[#dc4e98]' : 'bg-white' }}"></span></td>
-                                <td class="font-semibold text-zinc-900">{{ $student['name'] }}</td>
-                                <td>{{ $student['id'] }}</td>
-                                <td>{{ $student['marks'] }}</td>
-                                <td>{{ $student['percent'] }}%</td>
-                                <td>{{ $student['class'] }}</td>
+                                <td>
+                                    <div class="admin-user-cell">
+                                        <span>{{ $user['initials'] ?: 'U' }}</span>
+                                        <div>
+                                            <strong>{{ $user['name'] }}</strong>
+                                            <small>{{ $user['email'] }}</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ $user['role'] }}</td>
+                                <td>{{ $user['lastActive'] }}</td>
+                                <td>
+                                    <span class="admin-status-pill {{ $user['status'] === 'Inactive' ? 'inactive' : '' }}">{{ $user['status'] }}</span>
+                                </td>
+                                <td>
+                                    <div>
+                                        <button type="button" aria-label="Edit {{ $user['name'] }}">
+                                            <span class="material-symbols-outlined">edit</span>
+                                        </button>
+                                        <button type="button" aria-label="Delete {{ $user['name'] }}" data-delete-user="{{ $user['name'] }}">
+                                            <span class="material-symbols-outlined">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
                             </tr>
                         @empty
-                            <tr><td colspan="6" class="py-8 text-center text-zinc-500">No students yet.</td></tr>
+                            <tr>
+                                <td colspan="5" class="admin-empty-row">No users found yet.</td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div>
+
+            <footer class="admin-table-footer">
+                <p>Showing {{ number_format($recentUsers->count()) }} of {{ number_format($totalUsers) }} users</p>
+                <div>
+                    <button type="button" disabled><span class="material-symbols-outlined">chevron_left</span></button>
+                    <span>Page 1</span>
+                    <button type="button"><span class="material-symbols-outlined">chevron_right</span></button>
+                </div>
+            </footer>
         </section>
 
-        <section class="admin-card">
-            <div class="flex items-start justify-between">
-                <h2 class="text-xl font-black">All Exam Results</h2>
-                <span class="text-xl font-black text-zinc-400">...</span>
-            </div>
-            <div class="mt-4 space-y-3">
-                @forelse($classAverages->take(3) as $row)
-                    <div class="flex items-center gap-3 border-b border-zinc-100 pb-3">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-md bg-[#eef3ff] text-sm font-black text-[#4f79c9]">{{ $loop->iteration }}</div>
-                        <div class="min-w-0 flex-1">
-                            <p class="truncate text-sm font-bold text-zinc-900">{{ $row['label'] }}</p>
-                            <p class="truncate text-xs text-zinc-400">{{ $row['teacher'] }}</p>
+        <section class="admin-secondary-grid">
+            <article class="admin-tonal-card admin-activity-card">
+                <div class="admin-mini-header">
+                    <h2>Recent System Activity</h2>
+                    <a href="{{ route('admin.scores') }}">View All</a>
+                </div>
+                <div class="admin-activity-list">
+                    @forelse($classAverages->take(3) as $row)
+                        <div>
+                            <span class="material-symbols-outlined {{ $loop->iteration === 2 ? 'secondary' : ($loop->iteration === 3 ? 'danger' : '') }}">
+                                {{ $loop->iteration === 1 ? 'person_add' : ($loop->iteration === 2 ? 'upload' : 'warning') }}
+                            </span>
+                            <div>
+                                <p><strong>{{ $row['teacher'] }}</strong> updated {{ $row['label'] }} performance data.</p>
+                                <small>{{ number_format($row['average'], 1) }}% class average</small>
+                            </div>
                         </div>
-                        <p class="text-xs font-semibold text-zinc-500">{{ $row['average'] }}%</p>
+                    @empty
+                        <p class="admin-empty-row">No system activity yet.</p>
+                    @endforelse
+                </div>
+            </article>
+
+            <article class="admin-tonal-card admin-events-card">
+                <h2>Upcoming Events</h2>
+                <div>
+                    <div class="active">
+                        <time><span>{{ now()->format('M') }}</span><strong>{{ now()->addDays(3)->format('d') }}</strong></time>
+                        <div>
+                            <strong>Faculty Meeting</strong>
+                            <small>09:00 AM - 11:30 AM</small>
+                        </div>
                     </div>
-                @empty
-                    <p class="py-8 text-center text-sm text-zinc-500">No exam results yet.</p>
-                @endforelse
-            </div>
-            <a class="btn-primary mt-4 w-full" href="{{ route('admin.students.index') }}">View All</a>
+                    <div>
+                        <time><span>{{ now()->format('M') }}</span><strong>{{ now()->addDays(6)->format('d') }}</strong></time>
+                        <div>
+                            <strong>Mid-term Registration</strong>
+                            <small>All Day Event</small>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ route('admin.classes.index') }}">Add Event</a>
+            </article>
         </section>
+    </section>
+
+    <div class="admin-delete-modal hidden" id="deleteModal">
+        <div id="modalContent">
+            <span class="material-symbols-outlined">delete_forever</span>
+            <h2>Delete User?</h2>
+            <p>Are you sure you want to delete <strong id="userNameToDelete"></strong>? This action cannot be undone.</p>
+            <div>
+                <button type="button" data-close-delete>Cancel</button>
+                <button type="button" data-confirm-delete>Delete</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        const resultLabels = @json($classAverages->pluck('label')->take(8)->values());
-        const resultValues = @json($classAverages->pluck('average')->take(8)->values());
-        const attendanceValues = @json($attendanceChart['values']);
+        const deleteModal = document.getElementById('deleteModal');
+        const modalContent = document.getElementById('modalContent');
+        const userNameToDelete = document.getElementById('userNameToDelete');
 
-        new Chart(document.getElementById('examResultChart'), {
-            type: 'bar',
-            data: {
-                labels: resultLabels.length ? resultLabels : ['Jan', 'Feb', 'Mar', 'Apr'],
-                datasets: [
-                    {
-                        label: 'Teacher',
-                        data: resultValues.length ? resultValues : [65, 52, 78, 60],
-                        backgroundColor: '#4f79c9',
-                        borderRadius: 6,
-                        barPercentage: 0.45
-                    },
-                    {
-                        label: 'Student',
-                        data: resultValues.length ? resultValues.map((value) => Math.max(0, value - 12)) : [48, 50, 60, 42],
-                        backgroundColor: '#dc4e98',
-                        borderRadius: 6,
-                        barPercentage: 0.45
-                    }
-                ]
-            },
-            options: {
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { beginAtZero: true, max: 100, grid: { color: '#eef3ff', borderDash: [4, 4] } },
-                    x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true } }
-                }
-            }
+        document.querySelectorAll('[data-delete-user]').forEach((button) => {
+            button.addEventListener('click', () => {
+                userNameToDelete.textContent = button.dataset.deleteUser;
+                deleteModal.classList.remove('hidden');
+                requestAnimationFrame(() => modalContent.classList.add('is-visible'));
+            });
         });
 
-        new Chart(document.getElementById('studentsChart'), {
-            type: 'doughnut',
-            data: {
-                labels: @json($attendanceChart['labels']),
-                datasets: [{
-                    data: attendanceValues.some((value) => value > 0) ? attendanceValues : [65, 20, 15],
-                    backgroundColor: ['#4f79c9', '#dc4e98', '#f3f5fb'],
-                    borderColor: '#ffffff',
-                    borderWidth: 8,
-                    cutout: '64%'
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: { display: false },
-                    tooltip: { enabled: true }
-                }
-            },
-            plugins: [{
-                id: 'centerTotal',
-                afterDraw(chart) {
-                    const { ctx, chartArea } = chart;
-                    ctx.save();
-                    ctx.textAlign = 'center';
-                    ctx.fillStyle = '#71717a';
-                    ctx.font = '13px Instrument Sans, sans-serif';
-                    ctx.fillText('Total', (chartArea.left + chartArea.right) / 2, (chartArea.top + chartArea.bottom) / 2 - 8);
-                    ctx.fillStyle = '#171326';
-                    ctx.font = 'bold 24px Instrument Sans, sans-serif';
-                    ctx.fillText('{{ number_format($totalStudents) }}', (chartArea.left + chartArea.right) / 2, (chartArea.top + chartArea.bottom) / 2 + 20);
-                    ctx.restore();
-                }
-            }]
+        document.querySelectorAll('[data-close-delete], [data-confirm-delete]').forEach((button) => {
+            button.addEventListener('click', () => {
+                modalContent.classList.remove('is-visible');
+                setTimeout(() => deleteModal.classList.add('hidden'), 180);
+            });
         });
     </script>
 </x-layouts.app>

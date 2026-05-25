@@ -429,4 +429,1340 @@
     .teacher-record-table .data-table td {
         @apply py-6;
     }
+
+    .admin-surface {
+        @apply h-screen overflow-hidden bg-[#f8f9ff] text-[#0b1c30] antialiased;
+        font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .admin-shell {
+        @apply flex h-screen overflow-hidden;
+    }
+
+    .admin-edupulse-sidebar {
+        @apply hidden h-full w-64 shrink-0 flex-col border-r border-[#c9c4d4] bg-[#eff4ff] p-4 lg:flex;
+    }
+
+    .admin-edupulse-brand {
+        @apply mb-8 px-3;
+    }
+
+    .admin-edupulse-brand h1 {
+        @apply text-xl font-bold text-[#432d97];
+    }
+
+    .admin-edupulse-brand p {
+        @apply mt-1 text-xs font-medium text-[#484552];
+    }
+
+    .admin-edupulse-nav {
+        @apply flex flex-1 flex-col gap-2 overflow-y-auto;
+    }
+
+    .admin-edupulse-nav a,
+    .admin-edupulse-footer a,
+    .admin-edupulse-footer button {
+        @apply flex min-h-11 w-full items-center gap-4 rounded-lg px-4 text-left text-xs font-semibold text-[#484552] transition hover:scale-[1.02] hover:bg-[#dce9ff];
+    }
+
+    .admin-edupulse-nav a.active {
+        @apply bg-[#5b47b0] font-bold text-[#d3c9ff] hover:scale-100;
+    }
+
+    .admin-edupulse-footer {
+        @apply mt-auto space-y-2 border-t border-[#c9c4d4] pt-8;
+    }
+
+    .admin-edupulse-footer .admin-invite-link {
+        @apply justify-center bg-[#432d97] text-sm font-bold text-white hover:bg-[#5b47b0];
+    }
+
+    .admin-edupulse-main {
+        @apply min-w-0 flex-1;
+    }
+
+    .admin-edupulse-content {
+        @apply h-screen overflow-y-auto p-4 lg:p-8;
+    }
+
+    .admin-edupulse-dashboard {
+        @apply mx-auto max-w-7xl space-y-6;
+    }
+
+    .admin-dashboard-topbar {
+        @apply sticky top-0 z-40 flex min-h-16 items-center justify-between gap-4 bg-[#f8f9ff]/95 py-2 backdrop-blur;
+    }
+
+    .admin-dashboard-topbar h1 {
+        @apply text-2xl font-bold tracking-tight text-[#432d97] sm:text-[32px];
+    }
+
+    .admin-dashboard-topbar p {
+        @apply text-sm text-[#484552];
+    }
+
+    .admin-dashboard-topbar > div:last-child {
+        @apply flex items-center gap-4;
+    }
+
+    .admin-global-search {
+        @apply relative hidden md:block;
+    }
+
+    .admin-global-search .material-symbols-outlined {
+        @apply absolute left-3 top-2 text-[#797583];
+    }
+
+    .admin-global-search input {
+        @apply h-10 w-64 rounded-lg border border-[#c9c4d4] bg-[#eff4ff] pl-10 pr-4 text-sm outline-none transition focus:border-[#432d97] focus:ring-2 focus:ring-[#432d97]/20;
+    }
+
+    .admin-dashboard-topbar button[aria-label="Notifications"] {
+        @apply relative flex h-10 w-10 items-center justify-center rounded-full text-[#484552] transition hover:bg-[#eff4ff];
+    }
+
+    .admin-dashboard-topbar button[aria-label="Notifications"] i {
+        @apply absolute right-2 top-2 h-2 w-2 rounded-full border-2 border-[#f8f9ff] bg-[#ba1a1a];
+    }
+
+    .admin-profile-avatar {
+        @apply flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#5b47b0] bg-[#e6deff] text-sm font-black text-[#1c0062];
+    }
+
+    .admin-stat-grid {
+        @apply grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4;
+    }
+
+    .admin-tonal-card {
+        @apply rounded-xl bg-white shadow-[0_2px_10px_rgba(0,0,0,0.04)] transition;
+    }
+
+    .admin-tonal-card:hover {
+        @apply -translate-y-0.5 shadow-md;
+    }
+
+    .admin-total-card {
+        @apply flex items-center justify-between border-l-4 p-4;
+    }
+
+    .admin-total-card.primary {
+        @apply border-[#432d97];
+    }
+
+    .admin-total-card.secondary {
+        @apply border-[#006d42];
+    }
+
+    .admin-total-card.tertiary {
+        @apply border-[#795100];
+    }
+
+    .admin-total-card.danger {
+        @apply border-[#ba1a1a];
+    }
+
+    .admin-total-card span:first-child,
+    .admin-card-header p,
+    .admin-user-table td,
+    .admin-table-footer p,
+    .admin-table-footer span,
+    .admin-activity-list small,
+    .admin-events-card small {
+        @apply text-sm text-[#484552];
+    }
+
+    .admin-total-card strong {
+        @apply mt-1 block text-[32px] font-bold leading-10;
+    }
+
+    .admin-total-card.primary strong {
+        @apply text-[#432d97];
+    }
+
+    .admin-total-card.secondary strong {
+        @apply text-[#006d42];
+    }
+
+    .admin-total-card.tertiary strong {
+        @apply text-[#795100];
+    }
+
+    .admin-total-card.danger strong {
+        @apply text-[#ba1a1a];
+    }
+
+    .admin-total-card small {
+        @apply mt-1 flex items-center gap-1 text-[11px] font-semibold text-[#006d42];
+    }
+
+    .admin-total-card small .material-symbols-outlined {
+        @apply text-sm;
+    }
+
+    .admin-total-card > .material-symbols-outlined {
+        @apply flex h-12 w-12 items-center justify-center rounded-xl text-3xl;
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .admin-total-card.primary > .material-symbols-outlined {
+        @apply bg-[#e6deff] text-[#432d97];
+    }
+
+    .admin-total-card.secondary > .material-symbols-outlined {
+        @apply bg-[#7cfbb4] text-[#006d42];
+    }
+
+    .admin-total-card.tertiary > .material-symbols-outlined {
+        @apply bg-[#ffddb0] text-[#795100];
+    }
+
+    .admin-total-card.danger > .material-symbols-outlined {
+        @apply bg-[#ffdad6] text-[#ba1a1a];
+    }
+
+    .admin-user-card {
+        @apply overflow-hidden;
+    }
+
+    .admin-card-header {
+        @apply flex flex-col justify-between gap-4 border-b border-[#c9c4d4] p-6 md:flex-row md:items-center;
+    }
+
+    .admin-card-header h2,
+    .admin-mini-header h2,
+    .admin-events-card h2 {
+        @apply text-lg font-semibold text-[#0b1c30];
+    }
+
+    .admin-card-header p {
+        @apply mt-1;
+    }
+
+    .admin-card-header > div:last-child {
+        @apply flex flex-wrap items-center gap-3;
+    }
+
+    .admin-card-header label {
+        @apply relative block;
+    }
+
+    .admin-card-header label .material-symbols-outlined {
+        @apply absolute left-3 top-2 text-[#797583];
+    }
+
+    .admin-card-header select {
+        @apply h-10 min-w-36 appearance-none rounded-lg border border-[#c9c4d4] bg-[#f8f9ff] pl-10 pr-4 text-sm outline-none focus:border-[#432d97] focus:ring-2 focus:ring-[#432d97]/20;
+    }
+
+    .admin-card-header a {
+        @apply inline-flex h-10 items-center gap-1 rounded-lg border border-[#c9c4d4] px-4 text-xs font-semibold text-[#484552] transition hover:bg-[#eff4ff];
+    }
+
+    .admin-card-header a .material-symbols-outlined {
+        @apply text-lg;
+    }
+
+    .admin-user-table-wrap {
+        @apply overflow-x-auto;
+    }
+
+    .admin-user-table {
+        @apply w-full min-w-[760px] text-left;
+    }
+
+    .admin-user-table th {
+        @apply border-b border-[#c9c4d4] bg-[#eff4ff] px-6 py-4 text-xs font-bold uppercase tracking-wide text-[#484552];
+    }
+
+    .admin-user-table td {
+        @apply border-b border-[#c9c4d4] px-6 py-4;
+    }
+
+    .admin-user-table tbody tr {
+        @apply transition hover:bg-[#f8f9ff];
+    }
+
+    .admin-user-cell {
+        @apply flex items-center gap-4;
+    }
+
+    .admin-user-cell > span {
+        @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e6deff] text-sm font-bold text-[#432d97];
+    }
+
+    .admin-user-cell strong {
+        @apply block text-sm font-semibold text-[#0b1c30];
+    }
+
+    .admin-user-cell small {
+        @apply block text-sm text-[#484552];
+    }
+
+    .admin-status-pill {
+        @apply inline-flex rounded-full bg-[#7cfbb4] px-3 py-1 text-xs font-semibold text-[#007347];
+    }
+
+    .admin-status-pill.inactive {
+        @apply bg-[#dce9ff] text-[#484552];
+    }
+
+    .admin-user-table td:last-child {
+        @apply text-right;
+    }
+
+    .admin-user-table td:last-child > div {
+        @apply flex justify-end gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100;
+    }
+
+    .admin-user-table tr:hover td:last-child > div {
+        @apply opacity-100;
+    }
+
+    .admin-user-table td:last-child button {
+        @apply rounded-lg p-2 text-[#484552] transition hover:text-[#432d97];
+    }
+
+    .admin-user-table td:last-child button:last-child {
+        @apply hover:text-[#ba1a1a];
+    }
+
+    .admin-table-footer {
+        @apply flex items-center justify-between gap-4 border-t border-[#c9c4d4] bg-[#eff4ff] p-4;
+    }
+
+    .admin-table-footer div {
+        @apply flex items-center gap-3;
+    }
+
+    .admin-table-footer button {
+        @apply flex h-9 w-9 items-center justify-center rounded-lg transition hover:bg-[#dce9ff] disabled:opacity-30;
+    }
+
+    .admin-secondary-grid {
+        @apply grid grid-cols-1 gap-6 lg:grid-cols-3;
+    }
+
+    .admin-activity-card {
+        @apply p-6 lg:col-span-2;
+    }
+
+    .admin-mini-header {
+        @apply mb-6 flex items-center justify-between;
+    }
+
+    .admin-mini-header a {
+        @apply text-xs font-semibold text-[#432d97] hover:underline;
+    }
+
+    .admin-activity-list {
+        @apply space-y-4;
+    }
+
+    .admin-activity-list > div {
+        @apply flex gap-4;
+    }
+
+    .admin-activity-list > div > .material-symbols-outlined {
+        @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#5b47b0] text-lg text-[#d3c9ff];
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .admin-activity-list > div > .material-symbols-outlined.secondary {
+        @apply bg-[#7cfbb4] text-[#007347];
+    }
+
+    .admin-activity-list > div > .material-symbols-outlined.danger {
+        @apply bg-[#ffdad6] text-[#93000a];
+    }
+
+    .admin-activity-list p {
+        @apply text-sm text-[#0b1c30];
+    }
+
+    .admin-events-card {
+        @apply p-6;
+    }
+
+    .admin-events-card > div {
+        @apply mt-6 space-y-4;
+    }
+
+    .admin-events-card > div > div {
+        @apply flex items-center gap-4 rounded-lg p-3 transition hover:bg-[#e5eeff];
+    }
+
+    .admin-events-card > div > div.active {
+        @apply bg-[#e5eeff];
+    }
+
+    .admin-events-card time {
+        @apply flex h-10 w-10 shrink-0 flex-col items-center justify-center rounded bg-[#d3e4fe] text-[#0b1c30];
+    }
+
+    .admin-events-card .active time {
+        @apply bg-[#432d97] text-white;
+    }
+
+    .admin-events-card time span {
+        @apply text-[10px] font-semibold uppercase leading-none;
+    }
+
+    .admin-events-card time strong {
+        @apply text-base font-bold leading-none;
+    }
+
+    .admin-events-card div div strong {
+        @apply block text-xs font-semibold text-[#0b1c30];
+    }
+
+    .admin-events-card a {
+        @apply mt-6 flex h-10 w-full items-center justify-center rounded-lg border border-[#432d97] text-xs font-semibold text-[#432d97] transition hover:bg-[#e6deff];
+    }
+
+    .admin-delete-modal {
+        @apply fixed inset-0 z-[60] flex items-center justify-center bg-[#0b1c30]/40 p-4 backdrop-blur-sm;
+    }
+
+    .admin-delete-modal.hidden {
+        @apply hidden;
+    }
+
+    .admin-delete-modal > div {
+        @apply w-full max-w-sm scale-95 rounded-xl bg-white p-6 text-center opacity-0 shadow-lg transition duration-200;
+    }
+
+    .admin-delete-modal > div.is-visible {
+        @apply scale-100 opacity-100;
+    }
+
+    .admin-delete-modal > div > .material-symbols-outlined {
+        @apply mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#ffdad6] text-3xl text-[#ba1a1a];
+    }
+
+    .admin-delete-modal h2 {
+        @apply mt-4 text-lg font-semibold text-[#0b1c30];
+    }
+
+    .admin-delete-modal p {
+        @apply mt-1 text-sm leading-6 text-[#484552];
+    }
+
+    .admin-delete-modal div div {
+        @apply mt-6 flex gap-3;
+    }
+
+    .admin-delete-modal button {
+        @apply flex-1 rounded-lg py-2 text-xs font-semibold transition;
+    }
+
+    .admin-delete-modal button:first-child {
+        @apply bg-[#dce9ff] text-[#484552] hover:bg-[#d3e4fe];
+    }
+
+    .admin-delete-modal button:last-child {
+        @apply bg-[#ba1a1a] text-white hover:opacity-90;
+    }
+
+    .admin-empty-row {
+        @apply py-8 text-center text-sm text-[#484552];
+    }
+
+    .teacher-surface {
+        @apply h-screen overflow-hidden bg-[#f8f9ff] text-[#0b1c30] antialiased;
+        font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #c9c4d4;
+        border-radius: 9999px;
+    }
+
+    .teacher-shell {
+        @apply h-screen overflow-hidden;
+    }
+
+    .teacher-sidebar {
+        @apply fixed left-0 top-0 z-50 hidden h-full w-64 flex-col border-r border-[#c9c4d4] bg-[#eff4ff] p-4 lg:flex;
+    }
+
+    .teacher-brand {
+        @apply mb-8 px-3;
+    }
+
+    .teacher-brand h1 {
+        @apply text-xl font-bold text-[#432d97];
+    }
+
+    .teacher-brand p {
+        @apply mt-1 text-xs font-medium text-[#484552];
+    }
+
+    .teacher-nav {
+        @apply flex flex-1 flex-col gap-1 overflow-y-auto;
+    }
+
+    .teacher-nav a,
+    .teacher-sidebar-footer a,
+    .teacher-sidebar-footer button {
+        @apply flex min-h-12 w-full items-center gap-4 rounded-lg px-4 text-left text-xs font-semibold text-[#484552] transition active:scale-95 hover:bg-[#dce9ff];
+    }
+
+    .teacher-nav a.active {
+        @apply bg-[#5b47b0] font-bold text-[#d3c9ff];
+    }
+
+    .teacher-sidebar-footer {
+        @apply mt-auto space-y-1 border-t border-[#c9c4d4] pt-4;
+    }
+
+    .teacher-sidebar-footer .teacher-primary-link {
+        @apply mb-4 justify-center bg-[#432d97] text-sm font-bold text-white hover:bg-[#5b47b0];
+    }
+
+    .teacher-main {
+        @apply flex h-screen min-w-0 flex-col lg:ml-64;
+    }
+
+    .teacher-topbar {
+        @apply sticky top-0 z-40 flex h-16 items-center justify-between gap-4 border-b border-[#c9c4d4] bg-[#f8f9ff] px-4 shadow-sm lg:px-6;
+    }
+
+    .teacher-topbar p {
+        @apply text-2xl font-bold tracking-tight text-[#432d97] sm:text-[32px];
+    }
+
+    .teacher-top-actions {
+        @apply ml-auto flex items-center gap-3;
+    }
+
+    .teacher-search {
+        @apply relative hidden lg:block;
+    }
+
+    .teacher-search input {
+        @apply h-10 w-96 rounded-full border border-[#c9c4d4] bg-[#eff4ff] pl-10 pr-4 text-sm outline-none transition focus:border-[#432d97] focus:ring-2 focus:ring-[#432d97]/20;
+    }
+
+    .teacher-search .material-symbols-outlined {
+        @apply absolute left-3 top-2 text-[#484552];
+    }
+
+    .teacher-top-actions button {
+        @apply flex h-10 w-10 items-center justify-center rounded-full text-[#432d97] transition hover:bg-[#eff4ff];
+    }
+
+    .teacher-avatar {
+        @apply flex h-8 w-8 items-center justify-center rounded-full border border-[#432d97] bg-[#e6deff] text-sm font-black text-[#1c0062];
+    }
+
+    .teacher-content {
+        @apply flex-1 overflow-y-auto p-4 lg:p-6;
+    }
+
+    .teacher-dashboard {
+        @apply mx-auto max-w-7xl space-y-6;
+    }
+
+    .teacher-hero-grid {
+        @apply grid grid-cols-12 gap-6;
+    }
+
+    .teacher-welcome-card {
+        @apply relative col-span-12 overflow-hidden rounded-xl border-l-4 border-[#432d97] bg-[#e6deff] p-6 shadow-sm lg:col-span-8;
+    }
+
+    .teacher-welcome-card h1 {
+        @apply text-2xl font-bold leading-8 text-[#1c0062];
+    }
+
+    .teacher-welcome-card p {
+        @apply mt-1 max-w-md text-sm leading-6 text-[#49339d];
+    }
+
+    .teacher-welcome-card div:first-child {
+        @apply relative z-10;
+    }
+
+    .teacher-welcome-card div div {
+        @apply mt-6 flex flex-wrap gap-4;
+    }
+
+    .teacher-welcome-card a {
+        @apply inline-flex min-h-11 items-center rounded-lg px-5 text-sm font-bold transition active:scale-95;
+    }
+
+    .teacher-welcome-card a:first-child {
+        @apply bg-[#432d97] text-white hover:bg-[#5b47b0];
+    }
+
+    .teacher-welcome-card a:last-child {
+        @apply border border-[#432d97] bg-white text-[#432d97] hover:bg-[#cabeff];
+    }
+
+    .teacher-welcome-card > .material-symbols-outlined {
+        @apply absolute -bottom-10 -right-8 text-[200px] text-[#432d97]/10;
+    }
+
+    .teacher-stat-stack {
+        @apply col-span-12 grid gap-4 lg:col-span-4;
+    }
+
+    .teacher-stat-card {
+        @apply flex items-center justify-between rounded-xl bg-white p-4 shadow-sm;
+    }
+
+    .teacher-stat-card.secondary {
+        @apply border-l-4 border-[#006d42];
+    }
+
+    .teacher-stat-card.tertiary {
+        @apply border-l-4 border-[#795100];
+    }
+
+    .teacher-stat-card div > span:first-child {
+        @apply block text-[11px] font-bold uppercase tracking-wide text-[#484552];
+    }
+
+    .teacher-stat-card strong {
+        @apply mt-1 block text-2xl font-bold text-[#0b1c30];
+    }
+
+    .teacher-stat-card small {
+        @apply mt-1 flex items-center gap-1 text-[10px] font-bold text-[#006d42];
+    }
+
+    .teacher-stat-card small .material-symbols-outlined {
+        @apply text-xs;
+    }
+
+    .teacher-stat-card > .material-symbols-outlined {
+        @apply flex h-14 w-14 items-center justify-center rounded-full text-3xl;
+    }
+
+    .teacher-stat-card.secondary > .material-symbols-outlined {
+        @apply bg-[#7cfbb4] text-[#007347];
+    }
+
+    .teacher-stat-card.tertiary > .material-symbols-outlined {
+        @apply bg-[#ffddb0] text-[#281800];
+    }
+
+    .teacher-bento-grid {
+        @apply grid grid-cols-12 gap-6;
+    }
+
+    .teacher-upload-card,
+    .teacher-summary-card,
+    .teacher-classes-card,
+    .teacher-roster-card {
+        @apply rounded-xl border border-[#c9c4d4] bg-white p-6 shadow-sm;
+    }
+
+    .teacher-upload-card {
+        @apply col-span-12 flex flex-col lg:col-span-7;
+    }
+
+    .teacher-section-header {
+        @apply mb-6 flex items-center justify-between gap-4;
+    }
+
+    .teacher-section-header div {
+        @apply flex items-center gap-2;
+    }
+
+    .teacher-section-header h2,
+    .teacher-summary-card h2,
+    .teacher-roster-header h2 {
+        @apply text-lg font-semibold text-[#0b1c30];
+    }
+
+    .teacher-section-header .material-symbols-outlined,
+    .teacher-section-header a {
+        @apply text-[#432d97];
+    }
+
+    .teacher-section-header a {
+        @apply text-xs font-semibold hover:underline;
+    }
+
+    .teacher-drop-zone {
+        @apply flex min-h-64 flex-1 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#c9c4d4] p-8 text-center transition hover:bg-[#eff4ff];
+    }
+
+    .teacher-drop-zone.is-dragging {
+        @apply border-[#432d97] bg-[#e6deff];
+    }
+
+    .teacher-drop-zone > .material-symbols-outlined {
+        @apply mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#e6deff] text-4xl text-[#432d97] transition group-hover:scale-110;
+    }
+
+    .teacher-drop-zone strong {
+        @apply text-base font-bold text-[#0b1c30];
+    }
+
+    .teacher-drop-zone p {
+        @apply mt-1 text-sm text-[#484552];
+    }
+
+    .teacher-drop-zone a {
+        @apply mt-6 rounded-lg border border-[#797583] px-8 py-3 text-sm font-bold text-[#484552] transition hover:bg-[#dce9ff];
+    }
+
+    .teacher-summary-card {
+        @apply col-span-12 lg:col-span-5;
+    }
+
+    .teacher-progress-list {
+        @apply mt-6 space-y-6;
+    }
+
+    .teacher-progress-item {
+        @apply flex items-center gap-4;
+    }
+
+    .teacher-progress-item > .material-symbols-outlined {
+        @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#d3e4fe] text-[#432d97];
+    }
+
+    .teacher-progress-item > div {
+        @apply min-w-0 flex-1;
+    }
+
+    .teacher-progress-item div div {
+        @apply mb-1 flex items-center justify-between gap-3;
+    }
+
+    .teacher-progress-item strong {
+        @apply truncate text-xs font-bold text-[#0b1c30];
+    }
+
+    .teacher-progress-item small {
+        @apply shrink-0 text-xs font-semibold text-[#006d42];
+    }
+
+    .teacher-progress-item p {
+        @apply h-2 overflow-hidden rounded-full bg-[#d3e4fe];
+    }
+
+    .teacher-progress-item p span {
+        @apply block h-full rounded-full bg-[#432d97];
+    }
+
+    .teacher-summary-card > a {
+        @apply mt-8 flex w-full items-center justify-center gap-1 border-t border-[#c9c4d4] pt-6 text-sm font-bold text-[#432d97] hover:underline;
+    }
+
+    .teacher-summary-card > a .material-symbols-outlined {
+        @apply text-base;
+    }
+
+    .teacher-classes-card {
+        @apply p-6;
+    }
+
+    .teacher-section-header > span {
+        @apply text-xs font-semibold text-[#484552];
+    }
+
+    .teacher-class-grid {
+        @apply grid gap-4 md:grid-cols-2 xl:grid-cols-3;
+    }
+
+    .teacher-class-grid section {
+        @apply rounded-xl border border-[#c9c4d4] bg-[#f8f9ff] p-4 transition hover:-translate-y-0.5 hover:border-[#432d97] hover:shadow-sm;
+    }
+
+    .teacher-class-grid section.current {
+        @apply border-[#432d97] bg-[#e6deff];
+    }
+
+    .teacher-class-grid section > div:first-child {
+        @apply flex items-center gap-3;
+    }
+
+    .teacher-class-grid section > div:first-child > .material-symbols-outlined {
+        @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#d3e4fe] text-[#432d97];
+    }
+
+    .teacher-class-grid section.current > div:first-child > .material-symbols-outlined {
+        @apply bg-[#432d97] text-white;
+    }
+
+    .teacher-class-grid strong {
+        @apply block truncate text-sm font-bold text-[#0b1c30];
+    }
+
+    .teacher-class-grid small {
+        @apply text-xs font-semibold text-[#484552];
+    }
+
+    .teacher-class-grid section > p {
+        @apply mt-4 h-2 overflow-hidden rounded-full bg-[#d3e4fe];
+    }
+
+    .teacher-class-grid section > p span {
+        @apply block h-full rounded-full bg-[#432d97];
+    }
+
+    .teacher-class-grid footer {
+        @apply mt-4 flex items-center justify-between gap-3;
+    }
+
+    .teacher-class-grid footer div {
+        @apply flex gap-2;
+    }
+
+    .teacher-class-grid footer a {
+        @apply rounded-lg border border-[#c9c4d4] bg-white px-3 py-2 text-xs font-bold text-[#432d97] transition hover:bg-[#eff4ff];
+    }
+
+    .teacher-roster-card {
+        @apply overflow-hidden p-0;
+    }
+
+    .teacher-roster-header {
+        @apply flex flex-col justify-between gap-4 border-b border-[#c9c4d4] p-6 md:flex-row md:items-center;
+    }
+
+    .teacher-roster-header p {
+        @apply mt-1 text-sm text-[#484552];
+    }
+
+    .teacher-roster-header > div:last-child {
+        @apply flex flex-wrap items-center gap-2;
+    }
+
+    .teacher-roster-header a {
+        @apply inline-flex items-center gap-1 rounded-lg border border-[#c9c4d4] px-3 py-2 text-xs font-semibold text-[#484552] transition hover:bg-[#eff4ff];
+    }
+
+    .teacher-roster-header a .material-symbols-outlined {
+        @apply text-lg;
+    }
+
+    .teacher-table-wrap {
+        @apply overflow-x-auto;
+    }
+
+    .teacher-table {
+        @apply w-full min-w-[980px] border-collapse text-left;
+    }
+
+    .teacher-table th {
+        @apply bg-[#eff4ff] px-6 py-4 text-xs font-bold uppercase tracking-wide text-[#484552];
+    }
+
+    .teacher-table td {
+        @apply border-b border-[#c9c4d4] px-6 py-4 text-sm text-[#0b1c30];
+    }
+
+    .teacher-table tbody tr {
+        @apply transition hover:bg-[#eff4ff];
+    }
+
+    .teacher-student-cell {
+        @apply flex items-center gap-4;
+    }
+
+    .teacher-student-cell > span {
+        @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e6deff] text-sm font-black text-[#432d97];
+    }
+
+    .teacher-student-cell strong {
+        @apply block text-sm font-bold;
+    }
+
+    .teacher-student-cell small {
+        @apply block text-xs text-[#484552];
+    }
+
+    .teacher-class-name {
+        @apply block max-w-44 truncate text-sm font-bold text-[#0b1c30];
+    }
+
+    .teacher-class-subject {
+        @apply block text-xs font-semibold text-[#484552];
+    }
+
+    .teacher-grade-pill,
+    .teacher-status-pill {
+        @apply inline-flex rounded-full px-3 py-1 text-xs font-bold;
+    }
+
+    .teacher-grade-pill {
+        @apply bg-[#e6deff] text-[#49339d];
+    }
+
+    .teacher-grade-pill.success {
+        @apply bg-[#7cfbb4] text-[#002111];
+    }
+
+    .teacher-grade-pill.danger {
+        @apply bg-[#ffdad6] text-[#93000a];
+    }
+
+    .teacher-attendance-meter {
+        @apply flex items-center gap-2;
+    }
+
+    .teacher-attendance-meter p {
+        @apply h-2 w-16 overflow-hidden rounded-full bg-[#d3e4fe];
+    }
+
+    .teacher-attendance-meter p span {
+        @apply block h-full bg-[#432d97];
+    }
+
+    .teacher-attendance-meter small {
+        @apply text-xs font-semibold;
+    }
+
+    .teacher-status-pill {
+        @apply border border-[#006d42]/20 bg-[#006d42]/10 text-[#006d42];
+    }
+
+    .teacher-status-pill.danger {
+        @apply border-[#ba1a1a]/20 bg-[#ffdad6]/40 text-[#ba1a1a];
+    }
+
+    .teacher-table td:last-child {
+        @apply text-right;
+    }
+
+    .teacher-table td:last-child a {
+        @apply inline-flex text-[#484552] transition hover:text-[#432d97];
+    }
+
+    .teacher-roster-card footer {
+        @apply flex items-center justify-between gap-4 bg-[#eff4ff] p-6;
+    }
+
+    .teacher-roster-card footer p {
+        @apply text-xs font-semibold text-[#484552];
+    }
+
+    .teacher-roster-card footer div {
+        @apply flex items-center gap-1;
+    }
+
+    .teacher-roster-card footer button {
+        @apply flex min-h-8 min-w-8 items-center justify-center rounded-lg px-3 text-xs font-bold transition hover:bg-[#dce9ff] disabled:opacity-30;
+    }
+
+    .teacher-roster-card footer button.active {
+        @apply bg-[#432d97] text-white;
+    }
+
+    .teacher-fab {
+        @apply fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#432d97] text-white shadow-lg transition hover:scale-105 active:scale-95;
+    }
+
+    .teacher-page-footer {
+        @apply mt-8 border-t border-[#c9c4d4] py-6 text-center;
+    }
+
+    .teacher-page-footer p {
+        @apply text-[11px] font-semibold text-[#484552] opacity-60;
+    }
+
+    .teacher-empty-state {
+        @apply mx-auto mt-20 flex max-w-xl flex-col items-center rounded-xl bg-white p-10 text-center shadow-sm;
+    }
+
+    .teacher-empty-state .material-symbols-outlined {
+        @apply text-5xl text-[#432d97];
+    }
+
+    .teacher-empty-state h1 {
+        @apply mt-4 text-2xl font-bold;
+    }
+
+    .teacher-empty-state p,
+    .teacher-empty-row {
+        @apply text-sm leading-6 text-[#484552];
+    }
+
+    @media (max-width: 720px) {
+        .teacher-top-actions button[aria-label="Settings"] {
+            @apply hidden;
+        }
+
+        .teacher-welcome-card h1 {
+            @apply text-xl;
+        }
+
+        .teacher-roster-card footer {
+            @apply flex-col items-start;
+        }
+    }
+
+    .student-surface {
+        @apply bg-[#f8f9ff] text-[#0b1c30] antialiased;
+        font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .student-sidebar {
+        @apply fixed left-0 top-0 z-50 hidden h-full w-64 flex-col border-r border-[#c9c4d4] bg-[#eff4ff] p-4 lg:flex;
+    }
+
+    .student-sidebar h1 {
+        @apply text-xl font-bold text-[#432d97];
+    }
+
+    .student-sidebar p {
+        @apply mt-1 text-xs font-medium text-[#484552];
+    }
+
+    .student-nav {
+        @apply mt-8 flex flex-1 flex-col gap-1;
+    }
+
+    .student-nav a,
+    .student-sidebar-footer a,
+    .student-sidebar-footer button {
+        @apply flex min-h-12 w-full items-center gap-4 rounded-lg px-4 text-left text-xs font-semibold text-[#484552] transition hover:translate-x-1 hover:bg-[#dce9ff];
+    }
+
+    .student-nav a.active {
+        @apply bg-[#5b47b0] font-bold text-[#d3c9ff] hover:translate-x-0;
+    }
+
+    .student-sidebar-footer {
+        @apply mt-auto space-y-1 border-t border-[#c9c4d4] pt-4;
+    }
+
+    .student-sidebar-footer .student-study-button {
+        @apply mb-4 justify-center bg-[#432d97] text-sm font-bold text-white hover:translate-x-0 hover:bg-[#5b47b0];
+    }
+
+    .student-main {
+        @apply min-h-screen lg:ml-64;
+    }
+
+    .student-topbar {
+        @apply sticky top-0 z-40 flex min-h-16 items-center justify-between gap-4 border-b border-[#c9c4d4]/50 bg-[#f8f9ff]/95 px-4 shadow-sm backdrop-blur lg:px-6;
+    }
+
+    .student-menu-button {
+        @apply flex h-10 w-10 items-center justify-center rounded-lg bg-[#eff4ff] text-[#432d97] lg:hidden;
+    }
+
+    .student-product-name {
+        @apply text-xl font-bold tracking-tight text-[#432d97] sm:text-2xl;
+    }
+
+    .student-topbar p {
+        @apply text-xs font-medium text-[#484552];
+    }
+
+    .student-top-actions {
+        @apply ml-auto flex items-center gap-3;
+    }
+
+    .student-search {
+        @apply relative hidden lg:block;
+    }
+
+    .student-search input {
+        @apply h-10 w-64 rounded-full border-0 bg-[#eff4ff] pl-10 pr-4 text-sm outline-none transition focus:ring-2 focus:ring-[#432d97];
+    }
+
+    .student-search .material-symbols-outlined {
+        @apply absolute left-3 top-2 text-[#484552];
+    }
+
+    .student-top-actions button {
+        @apply relative flex h-10 w-10 items-center justify-center rounded-full text-[#432d97] transition hover:bg-[#eff4ff];
+    }
+
+    .student-top-actions button span:last-child:not(.material-symbols-outlined) {
+        @apply absolute right-2 top-2 h-2 w-2 rounded-full bg-[#ba1a1a];
+    }
+
+    .student-avatar {
+        @apply flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#5b47b0] bg-[#e6deff] text-sm font-black text-[#1c0062];
+    }
+
+    .student-content {
+        @apply space-y-6 p-4 lg:p-6;
+    }
+
+    .student-hero {
+        @apply flex flex-col gap-4 md:flex-row md:items-center md:justify-between;
+    }
+
+    .student-hero h2 {
+        @apply text-3xl font-bold leading-tight text-[#0b1c30] sm:text-[32px];
+    }
+
+    .student-hero p {
+        @apply mt-2 max-w-2xl text-sm leading-6 text-[#484552];
+    }
+
+    .student-hero-stats {
+        @apply flex flex-wrap gap-3;
+    }
+
+    .student-hero-stats div {
+        @apply min-w-36 rounded-xl px-4 py-3;
+    }
+
+    .student-hero-stats div:first-child {
+        @apply bg-[#7cfbb4] text-[#007347];
+    }
+
+    .student-hero-stats div:last-child {
+        @apply bg-[#5b47b0] text-[#d3c9ff];
+    }
+
+    .student-hero-stats span,
+    .student-stat-card span:first-child {
+        @apply block text-[11px] font-bold uppercase tracking-wide;
+    }
+
+    .student-hero-stats strong {
+        @apply mt-1 block text-xl font-semibold;
+    }
+
+    .student-grid {
+        @apply grid grid-cols-12 gap-3;
+    }
+
+    .student-card {
+        @apply rounded-xl bg-white p-4 shadow-[0_2px_10px_rgba(0,0,0,0.04)];
+    }
+
+    .attendance-card {
+        @apply col-span-12 border-l-4 border-[#432d97] lg:col-span-8;
+    }
+
+    .student-card-header {
+        @apply mb-4 flex items-center justify-between gap-3;
+    }
+
+    .student-card-header h3 {
+        @apply text-lg font-semibold text-[#0b1c30];
+    }
+
+    .student-card-header span,
+    .student-card-header a {
+        @apply text-xs font-semibold text-[#432d97];
+    }
+
+    .student-bars {
+        @apply flex min-h-64 items-end justify-between gap-2 px-2;
+    }
+
+    .student-bar-group {
+        @apply flex w-full flex-col items-center gap-1;
+    }
+
+    .student-bar-group div {
+        @apply relative h-48 w-full overflow-hidden rounded-t-lg bg-[#5b47b0]/15;
+    }
+
+    .student-bar-group span {
+        @apply absolute bottom-0 block w-full rounded-t-lg bg-[#432d97] transition-all duration-700;
+    }
+
+    .student-bar-group small {
+        @apply max-w-full truncate text-[11px] font-semibold text-[#484552];
+    }
+
+    .student-stat-stack {
+        @apply col-span-12 flex flex-col gap-3 lg:col-span-4;
+    }
+
+    .student-stat-card {
+        @apply flex flex-1 items-center justify-between rounded-xl bg-white p-4 shadow-[0_2px_10px_rgba(0,0,0,0.04)];
+    }
+
+    .student-stat-card.secondary {
+        @apply border-l-4 border-[#006d42];
+    }
+
+    .student-stat-card.tertiary {
+        @apply border-l-4 border-[#5a3b00];
+    }
+
+    .student-stat-card strong {
+        @apply mt-1 block text-3xl font-bold;
+    }
+
+    .student-stat-card.secondary strong {
+        @apply text-[#006d42];
+    }
+
+    .student-stat-card.tertiary strong {
+        @apply text-[#5a3b00];
+    }
+
+    .student-stat-card > .material-symbols-outlined {
+        @apply flex h-14 w-14 items-center justify-center rounded-full text-3xl;
+    }
+
+    .student-stat-card.secondary > .material-symbols-outlined {
+        @apply bg-[#7cfbb4] text-[#002111];
+    }
+
+    .student-stat-card.tertiary > .material-symbols-outlined {
+        @apply bg-[#ffddb0] text-[#281800];
+    }
+
+    .performance-card,
+    .quiz-card {
+        @apply col-span-12 lg:col-span-6;
+    }
+
+    .student-legend {
+        @apply flex gap-3;
+    }
+
+    .student-legend span {
+        @apply flex items-center gap-1 text-[11px] text-[#484552];
+    }
+
+    .student-legend i {
+        @apply h-2 w-2 rounded-full bg-[#432d97];
+    }
+
+    .student-legend span:last-child i {
+        @apply bg-[#c9c4d4];
+    }
+
+    .student-progress-list {
+        @apply space-y-6;
+    }
+
+    .student-progress-label {
+        @apply mb-2 flex items-center justify-between gap-3 text-xs;
+    }
+
+    .student-progress-label strong {
+        @apply truncate text-sm text-[#0b1c30];
+    }
+
+    .student-progress-label span {
+        @apply shrink-0 text-[#484552];
+    }
+
+    .student-progress-track {
+        @apply relative h-3 overflow-hidden rounded-full bg-[#e5eeff];
+    }
+
+    .student-progress-track span {
+        @apply absolute left-0 top-0 h-full rounded-full bg-[#432d97];
+    }
+
+    .student-progress-track .previous {
+        @apply bg-[#c9c4d4];
+    }
+
+    .student-quiz-list {
+        @apply space-y-3;
+    }
+
+    .student-quiz-item {
+        @apply flex items-center gap-3 rounded-lg border border-[#c9c4d4] bg-[#f8f9ff] p-3 transition hover:border-[#432d97];
+    }
+
+    .student-date-badge {
+        @apply flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg bg-[#ffddb0] text-[#281800];
+    }
+
+    .student-date-badge span {
+        @apply text-[11px] font-bold uppercase;
+    }
+
+    .student-date-badge strong {
+        @apply text-lg leading-none;
+    }
+
+    .student-quiz-item div:nth-child(2) {
+        @apply min-w-0 flex-1;
+    }
+
+    .student-quiz-item div:nth-child(2) strong {
+        @apply block truncate text-sm font-bold text-[#0b1c30];
+    }
+
+    .student-quiz-item div:nth-child(2) p {
+        @apply truncate text-[11px] font-semibold text-[#484552];
+    }
+
+    .student-quiz-item > span {
+        @apply rounded-full bg-[#432d97] px-3 py-1 text-[11px] font-semibold text-white;
+    }
+
+    .student-final-card {
+        @apply relative col-span-12 overflow-hidden rounded-2xl bg-[#5b47b0] p-8 text-[#d3c9ff];
+    }
+
+    .student-final-card::before {
+        content: "";
+        @apply absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-3xl;
+    }
+
+    .student-final-card > div,
+    .student-final-card > a {
+        @apply relative z-10;
+    }
+
+    .student-final-card {
+        @apply flex flex-col items-start justify-between gap-6 md:flex-row md:items-center;
+    }
+
+    .student-final-card h3 {
+        @apply text-xl font-semibold;
+    }
+
+    .student-final-card p {
+        @apply mt-2 max-w-xl text-sm leading-6 text-[#e6deff];
+    }
+
+    .student-final-card a {
+        @apply rounded-xl bg-[#d3c9ff] px-6 py-3 text-sm font-bold text-[#432d97] shadow-lg transition hover:bg-white;
+    }
+
+    .student-empty-state {
+        @apply mx-auto mt-16 flex max-w-xl flex-col items-center rounded-xl bg-white p-10 text-center shadow-[0_2px_10px_rgba(0,0,0,0.04)];
+    }
+
+    .student-empty-state .material-symbols-outlined {
+        @apply text-5xl text-[#432d97];
+    }
+
+    .student-empty-state h2 {
+        @apply mt-4 text-2xl font-bold;
+    }
+
+    .student-empty-state p,
+    .student-muted {
+        @apply text-sm leading-6 text-[#484552];
+    }
+
+    @media (max-width: 420px) {
+        .student-top-actions button[aria-label="Settings"],
+        .student-search {
+            @apply hidden;
+        }
+
+        .student-hero h2 {
+            @apply text-2xl;
+        }
+    }
 }
